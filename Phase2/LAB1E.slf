@@ -1,0 +1,63 @@
+terminals S 
+
+terminals true false val
+
+syntax
+
+e,f,g,r,v ::=  e /\ e  | true | false
+
+judgment value: val e
+
+ ----- val-true
+ val true
+
+ ----- val-false
+ val false
+
+judgment op: e /\ e == e
+
+       val v
+  -------------- op-false
+  false /\ v == false
+
+      val v
+  -------------- op-true
+  true /\ v == v
+
+judgment bstep: e => e
+
+      val v
+  -------------- bstep-val
+      v => v
+  
+    e1 => v1
+    e2 => v2
+    v1 /\ v2 == v3
+  -------------- bstep-add
+   e1 /\ e2 => v3
+
+theorem id-true-right:
+    forall p: val e
+    exists e /\ true => e
+
+proof by induction on p:
+    case rule
+        --------------- val-true
+        h1: val true
+    is
+        h2: true => true 
+        h3: true => true
+        h4: true /\ true == true
+        --------------- bstep-add
+        h5: true /\ true => true 
+    end case
+
+    case rule
+        --------------- val-false
+        h1: val false
+    is
+        proof by unproved
+    end case
+
+end induction
+end theorem

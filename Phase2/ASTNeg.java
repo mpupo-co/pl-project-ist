@@ -1,0 +1,27 @@
+public class ASTNeg implements ASTNode {
+
+    ASTNode exp;
+
+    public IValue eval(Environment <IValue>e) throws InterpreterError { 
+	IValue v0 = exp.eval(e); 
+	if (v0 instanceof VInt) { 
+	    return new VInt(-((VInt)v0).getval()); 
+	} else { 
+	    throw new InterpreterError("illegal types to neg operator"); 
+	}
+    }
+        
+    public ASTNeg(ASTNode e)
+    {
+	exp = e;
+    }
+
+	public ASTType typecheck(Environment<ASTType> e) throws InterpreterError, TypeCheckError{
+		ASTType t = exp.typecheck(e);
+		if(!(t instanceof ASTTInt)) 
+			throw new TypeCheckError("neg operator must be type Int");
+		return new ASTTInt();
+	}
+
+}
+
