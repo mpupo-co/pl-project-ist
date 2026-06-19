@@ -160,19 +160,6 @@ java Rusty      /* Rusty1 */
  
 All example programs are [here (Rusty1)](Phase1/myRustyTests.md) | [here (Rusty2)](Phase2/myRusty2Tests.md).
 
-## What I Learned
-
-Through this project I gained hands-on experience with:
-
-* Parser generation using JavaCC
-* Abstract syntax tree design
-* Interpreter implementation
-* Environment and store semantics
-* Runtime type checking
-* Static type systems
-* Algebraic data types and pattern matching
-* Subtyping and type inference concepts
-
 ---
 
 ## Limitations
